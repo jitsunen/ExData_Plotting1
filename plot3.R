@@ -1,7 +1,11 @@
 # Read table
-data <- read.table('household_power_consumption.txt', sep=';', header = TRUE,
-                   colClasses = rep("character", 7),
-                   nrows=2100000, comment.char="")
+data <- read.table('household_power_consumption.txt', 
+                   sep=';', 
+                   header = TRUE,
+                   colClasses = c(rep("character", 2), rep("numeric", 7)),
+                   nrows=2100000, 
+                   comment.char="",
+                   na.strings="?")
 # add date time
 data$DateTime <- paste(data$Date, data$Time, sep = " ")
 data$DateTime <- as.POSIXct(strptime(data$DateTime, format="%d/%m/%Y %H:%M:%S"))

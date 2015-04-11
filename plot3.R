@@ -1,3 +1,13 @@
+# Download data
+if( !file.exists("household_power_consumption.txt") ) {
+  temp <- tempfile()
+  download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", 
+                temp, 
+                method="curl")
+  file <- unzip(temp)
+  unlink(temp)
+}
+
 # Read table
 data <- read.table('household_power_consumption.txt', 
                    sep=';', 
